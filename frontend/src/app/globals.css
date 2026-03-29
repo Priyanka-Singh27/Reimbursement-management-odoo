@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-amber: #EDD9A3;
+  --color-brand-sage: #C8D5B9;
+  --color-brand-blush: #E8C4C4;
+  --color-brand-sky: #B8D4E3;
+  
+  --color-near-black: #141414;
+  --color-cream: #F7F4EF;
+  --color-shell: #EFEFEB;
+  --color-border-light: #E2DDD6;
+  
+  --color-success: #2D6A4F;
+  --color-warning: #B5660A;
+  --color-danger: #9B2335;
+  
+  --font-sans: var(--font-dm-sans), sans-serif;
+  --font-mono: var(--font-dm-mono), monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  background-color: var(--color-shell);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Typographic Utility enforcement */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Drag and Drop overrides */
+body.is-dragging {
+  cursor: grabbing !important;
+}
+
+/* Animations */
+@keyframes pulse-border {
+  0% {
+    border-color: #C8C3BB;
+  }
+  50% {
+    border-color: #141414;
+  }
+  100% {
+    border-color: #C8C3BB;
+  }
+}
+
+.animate-pulse-border {
+  animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Floating form inputs mechanics (for scaling borders smoothly) */
+.form-input-focus-ring:focus {
+  border-color: #141414;
+  box-shadow: 0 0 0 3px rgba(20, 20, 20, 0.06);
+}
+
+@keyframes shimmer {
+  100% {
+    background-position: -200% 0;
+  }
 }

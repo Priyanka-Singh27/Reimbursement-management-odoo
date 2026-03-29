@@ -1,5 +1,5 @@
-import Index from "@/components/ui/signup";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <Index />;
+  redirect("/dashboard");
 }
