@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuthStore, UserRole } from "../../store/authStore";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
@@ -18,6 +18,39 @@ export default function SignupIndex() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [countries, setCountries] = useState<any[]>([]);
+  const [selectedCountry, setSelectedCountry] = useState<string>("United States");
+  const [selectedCurrency, setSelectedCurrency] = useState<{ code: string, name: string } | null>(null);
+
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all?fields=name,currencies")
+      .then(res => res.json())
+      .then(data => {
+        const parsed = data.map((c: any) => ({
+          name: c.name.common,
+          currencyCode: c.currencies ? Object.keys(c.currencies)[0] : "USD",
+          currencyName: c.currencies ? (Object.values(c.currencies)[0] as any)?.name || "US Dollar" : "US Dollar"
+        })).sort((a: any, b: any) => a.name.localeCompare(b.name));
+        
+        setCountries(parsed);
+        
+        const def = parsed.find((p: any) => p.name === "United States");
+        if (def) {
+           setSelectedCurrency({ code: def.currencyCode, name: def.currencyName });
+        }
+      })
+      .catch(console.error);
+  }, []);
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const val = e.target.value;
+    setSelectedCountry(val);
+    const found = countries.find(c => c.name === val);
+    if (found) {
+       setSelectedCurrency({ code: found.currencyCode, name: found.currencyName });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -32,8 +65,8 @@ export default function SignupIndex() {
       }, {
         id: "comp_1",
         name: "Acme Corp",
-        country: "USA",
-        defaultCurrency: "USD"
+        country: selectedCountry,
+        defaultCurrency: selectedCurrency?.code || "USD"
       }, "mock-jwt-token");
       
       router.push("/dashboard");
@@ -158,6 +191,28 @@ export default function SignupIndex() {
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
+              </div>
+              
+              <div className="pt-2">
+                <label className="block text-[15px] font-medium text-near-black mb-1.5">Company Country</label>
+                <select
+                  value={selectedCountry}
+                  onChange={handleCountryChange}
+                  className="w-full bg-white border border-border-light rounded-[8px] h-[44px] px-[14px] text-[16px] text-near-black outline-none form-input-focus-ring transition-all duration-150 appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5%22%20stroke%3D%22%23666%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E')] bg-[position:right_10px_center] bg-no-repeat pr-10"
+                  onFocus={(e) => { e.currentTarget.style.transform = 'scale(0.99)'; }}
+                  onBlur={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+                >
+                  <option value="" disabled>Select a country</option>
+                  {countries.map(c => (
+                    <option key={c.name} value={c.name}>{c.name}</option>
+                  ))}
+                </select>
+
+                {selectedCurrency && (
+                  <div className="mt-3 inline-flex items-center gap-2 bg-[#FAFAFA] border border-border-light text-[#666] px-3 py-1.5 rounded-full text-[13px] font-medium">
+                    Your company currency will be set to {selectedCurrency.code} — {selectedCurrency.name}
+                  </div>
+                )}
               </div>
             </div>
 
