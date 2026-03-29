@@ -152,7 +152,7 @@ export default function SettingsPage() {
 
   return (
     <div className="flex-1 py-[40px] px-[48px] w-full flex flex-col min-h-0 bg-[#F7F4EF] font-sans">
-      <div className="max-w-[720px] w-full text-left pb-32">
+      <div className="max-w-[720px] w-full text-left pb-32 mx-auto">
         
         {/* HEADER */}
         <div className="mb-[40px]">
