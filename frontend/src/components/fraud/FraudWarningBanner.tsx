@@ -23,12 +23,12 @@ export function FraudWarningBanner({ score, reason, onDismiss, isVisible }: Frau
         >
           <AlertTriangle size={20} className="text-[#D97706] shrink-0 mt-0.5" />
           <div className="flex-1">
-            <h4 className="text-[16px] font-semibold text-[#92400e]">
+            <h4 className="text-[17px] font-semibold text-[#92400e]">
               {score >= 85 ? "Similar expense detected. Cannot submit." : "We noticed a possible duplicate."}
             </h4>
-            <p className="text-[16px] text-[#B45309] mt-1">{reason}</p>
+            <p className="text-[17px] text-[#B45309] mt-1">{reason}</p>
             {score < 85 && (
-              <p className="text-[16px] text-[#B45309] font-medium mt-1">Continue if this is a new expense.</p>
+              <p className="text-[17px] text-[#B45309] font-medium mt-1">Continue if this is a new expense.</p>
             )}
           </div>
           <button 

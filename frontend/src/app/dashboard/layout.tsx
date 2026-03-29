@@ -23,7 +23,7 @@ const NavItem = ({ href, icon: Icon, label }: { href: string; icon: any; label: 
   const pathname = usePathname();
   const active = pathname === href;
   return (
-    <Link href={href} className={`flex items-center gap-3 px-4 py-2 text-[15px] transition-opacity hover:opacity-100 ${
+    <Link href={href} className={`flex items-center gap-3 px-4 py-2 text-[16px] transition-opacity hover:opacity-100 ${
       active 
         ? "text-white border-l-2 border-[#EDD9A3] opacity-100 bg-white/5" 
         : "text-[#9a9a9a] border-l-2 border-transparent opacity-80"
@@ -54,18 +54,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   };
 
   return (
-    <div className="flex h-full w-full bg-cream text-near-black overflow-hidden relative font-sans">
+    <div className="flex flex-row h-[calc(100vh-32px)] m-4 rounded-[16px] shadow-sm bg-cream text-near-black overflow-hidden relative font-sans">
       
       {/* Sidebar - 200px Fixed */}
-      <aside className="w-[200px] bg-near-black flex flex-col shrink-0 relative z-20">
+      <aside className="w-[200px] h-full bg-near-black flex flex-col shrink-0 relative z-20">
         <div className="p-6">
-          <div className="text-white font-medium text-xl lowercase tracking-tight">reimburse.io</div>
+          <div className="text-white font-medium text-2xl lowercase tracking-tight">reimburse.io</div>
         </div>
 
         <nav className="flex-1 overflow-y-auto w-full py-4 flex flex-col gap-6">
           
           <div>
-            <p className="px-6 text-[11px] uppercase text-[#555] tracking-[0.08em] mb-3">General</p>
+            <p className="px-6 text-[12px] uppercase text-[#555] tracking-[0.08em] mb-3">General</p>
             <NavItem href="/dashboard" icon={LayoutDashboard} label="Dashboard" />
             
             {user.role === "Employee" && (
@@ -85,7 +85,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
           {user.role === "Admin" && (
             <div>
-              <p className="px-6 text-[11px] uppercase text-[#555] tracking-[0.08em] mb-3">Tools</p>
+              <p className="px-6 text-[12px] uppercase text-[#555] tracking-[0.08em] mb-3">Tools</p>
               <NavItem href="/dashboard/users" icon={Users} label="Users" />
               <NavItem href="/dashboard/rules" icon={FileText} label="Rules Builder" />
               <NavItem href="/dashboard/settings" icon={Settings} label="Settings" />
@@ -96,7 +96,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="p-4 mt-auto">
           <button 
             onClick={handleLogout}
-            className="flex items-center gap-3 px-2 py-2 text-[15px] text-[#9a9a9a] hover:text-white transition-colors w-full"
+            className="flex items-center gap-3 px-2 py-2 text-[16px] text-[#9a9a9a] hover:text-white transition-colors w-full"
           >
             <LogOut size={16} />
             Log out
@@ -105,28 +105,28 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </aside>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden relative bg-cream">
+      <div className="flex-1 flex flex-col h-full overflow-hidden relative bg-cream min-h-0">
         
         {/* Floating Top Right Tools */}
         <div className="absolute top-6 right-6 z-50 flex items-center gap-4">
           <button className="relative text-near-black/60 hover:text-near-black transition-colors">
-            <Bell size={20} />
-            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#EDD9A3] text-near-black text-[11px] font-bold">
+            <Bell size={21} />
+            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#EDD9A3] text-near-black text-[13px] font-bold">
               3
             </span>
           </button>
-          <div className="h-8 w-8 rounded-full bg-[#E2DDD6] border border-[#d6cfc4] flex items-center justify-center text-near-black font-semibold text-[16px]">
+          <div className="h-8 w-8 rounded-full bg-[#E2DDD6] border border-[#d6cfc4] flex items-center justify-center text-near-black font-semibold text-[18px]">
             {user.name.charAt(0)}
           </div>
         </div>
 
         {/* Page Content Map */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto p-10 pt-16">
+        <main className="flex-1 overflow-x-hidden overflow-y-auto flex flex-col min-h-0">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="h-full"
+            className="flex-1 flex flex-col w-full min-h-full"
           >
             {children}
           </motion.div>

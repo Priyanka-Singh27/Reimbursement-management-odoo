@@ -52,8 +52,8 @@ export default function RulesEnginePage() {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center text-near-black">
         <ShieldAlert size={48} className="text-[#9B2335] mb-4" />
-        <h2 className="text-[20px] font-[500] tracking-tight">Access Denied</h2>
-        <p className="text-[#888] text-[15px]">Only Administrators can manage the Approval Rules Engine.</p>
+        <h2 className="text-[21px] font-[500] tracking-tight">Access Denied</h2>
+        <p className="text-[#888] text-[16px]">Only Administrators can manage the Approval Rules Engine.</p>
       </div>
     );
   }
@@ -71,12 +71,12 @@ export default function RulesEnginePage() {
       
       <div className="flex-1 min-w-0 pr-4">
         <div className="flex items-center gap-2 mb-1">
-          <h3 className={`font-medium text-[16px] truncate ${rule.isActive ? "text-near-black" : "text-[#888]"}`}>{rule.name}</h3>
-          {!rule.isActive && <span className="text-[11px] uppercase font-bold bg-[#E2DDD6] text-[#666] px-1.5 py-0.5 rounded-sm">Disabled</span>}
+          <h3 className={`font-medium text-[17px] truncate ${rule.isActive ? "text-near-black" : "text-[#888]"}`}>{rule.name}</h3>
+          {!rule.isActive && <span className="text-[12px] uppercase font-bold bg-[#E2DDD6] text-[#666] px-1.5 py-0.5 rounded-sm">Disabled</span>}
         </div>
-        <p className="text-[14px] text-[#888] line-clamp-1 mb-3">{rule.description}</p>
+        <p className="text-[15px] text-[#888] line-clamp-1 mb-3">{rule.description}</p>
         
-        <div className="flex flex-wrap items-center gap-1.5 text-[12px] font-mono">
+        <div className="flex flex-wrap items-center gap-1.5 text-[13px] font-mono">
           {rule.conditions.length > 0 ? (
             <>
               {rule.conditions.map((c, i) => (
@@ -84,7 +84,7 @@ export default function RulesEnginePage() {
                   <span className="bg-[#FEF3C7] text-[#B5660A] px-2 py-0.5 rounded-sm font-medium border border-[#D97706]/20">
                     {c.field} {c.operator} {c.value}
                   </span>
-                  {i < rule.conditions.length - 1 && <span className="text-[#C8C3BB] font-sans text-[11px] font-bold">AND</span>}
+                  {i < rule.conditions.length - 1 && <span className="text-[#C8C3BB] font-sans text-[12px] font-bold">AND</span>}
                 </React.Fragment>
               ))}
             </>
@@ -141,15 +141,16 @@ export default function RulesEnginePage() {
   );
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 pb-20">
+    <div className="flex-1 py-[40px] px-[48px] w-full flex flex-col min-h-0">
+      <div className="max-w-7xl mx-auto space-y-8 pb-20">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-2">
         <div>
-          <h1 className="text-[28px] font-[400] text-near-black tracking-tight">Routing Rules</h1>
-          <p className="text-[15px] text-[#666] mt-1">Configure global sequential routing and conditional overrides.</p>
+          <h1 className="text-[29px] font-[400] text-near-black tracking-tight">Routing Rules</h1>
+          <p className="text-[16px] text-[#666] mt-1">Configure global sequential routing and conditional overrides.</p>
         </div>
         <button 
           onClick={() => setEditingRule("NEW")}
-          className="bg-[#141414] text-white px-5 py-2.5 rounded-[10px] text-[15px] font-medium hover:bg-[#2a2a2a] transition-all flex items-center gap-2 active:scale-97"
+          className="bg-[#141414] text-white px-5 py-2.5 rounded-[10px] text-[16px] font-medium hover:bg-[#2a2a2a] transition-all flex items-center gap-2 active:scale-97"
         >
           <Plus size={16} /> New Rule
         </button>
@@ -161,14 +162,14 @@ export default function RulesEnginePage() {
         <div className="space-y-4">
           <div className="flex items-center gap-2 mb-2 pb-2 border-b border-[#E2DDD6]">
             <Workflow size={18} className="text-[#666]" />
-            <h2 className="text-[16px] font-semibold text-near-black uppercase tracking-wider">Sequential Base</h2>
+            <h2 className="text-[17px] font-semibold text-near-black uppercase tracking-wider">Sequential Base</h2>
           </div>
-          <p className="text-[14px] text-[#888] mb-4">Base routing for all expenses. Order defines execution sequence.</p>
+          <p className="text-[15px] text-[#888] mb-4">Base routing for all expenses. Order defines execution sequence.</p>
           
           <Reorder.Group axis="y" values={seqRules} onReorder={handleSeqReorder} className="space-y-3">
             {seqRules.map((rule) => <RenderRuleItem key={rule.id} rule={rule} />)}
             {seqRules.length === 0 && (
-              <div className="p-8 border border-[#E2DDD6] border-dashed rounded-[12px] text-center text-[#888] text-[14px]">
+              <div className="p-8 border border-[#E2DDD6] border-dashed rounded-[12px] text-center text-[#888] text-[15px]">
                 No sequential base rules. Expenses will auto-approve if no conditions match.
               </div>
             )}
@@ -179,14 +180,14 @@ export default function RulesEnginePage() {
         <div className="space-y-4">
           <div className="flex items-center gap-2 mb-2 pb-2 border-b border-[#E2DDD6]">
             <SplitSquareHorizontal size={18} className="text-[#B5660A]" />
-            <h2 className="text-[16px] font-semibold text-near-black uppercase tracking-wider">Conditional Overrides</h2>
+            <h2 className="text-[17px] font-semibold text-near-black uppercase tracking-wider">Conditional Overrides</h2>
           </div>
-          <p className="text-[14px] text-[#888] mb-4">Exceptions based on thresholds, categories, etc.</p>
+          <p className="text-[15px] text-[#888] mb-4">Exceptions based on thresholds, categories, etc.</p>
           
           <Reorder.Group axis="y" values={condRules} onReorder={handleCondReorder} className="space-y-3">
             {condRules.map((rule) => <RenderRuleItem key={rule.id} rule={rule} />)}
             {condRules.length === 0 && (
-              <div className="p-8 border border-[#E2DDD6] border-dashed rounded-[12px] text-center text-[#888] text-[14px]">
+              <div className="p-8 border border-[#E2DDD6] border-dashed rounded-[12px] text-center text-[#888] text-[15px]">
                 No conditional overrides defined.
               </div>
             )}
@@ -209,6 +210,7 @@ export default function RulesEnginePage() {
           }}
         />
       )}
+    </div>
     </div>
   );
 }
@@ -291,7 +293,7 @@ function RuleEditorModal({
           <form onSubmit={e => { e.preventDefault(); onSave(formData); }} className="flex flex-col max-h-[85vh]">
             
             <div className="flex justify-between items-center mb-6 border-b border-[#E2DDD6] pb-4 shrink-0">
-              <Dialog.Title className="text-[20px] font-medium flex items-center gap-2 text-near-black">
+              <Dialog.Title className="text-[21px] font-medium flex items-center gap-2 text-near-black">
                 <Settings2 size={18} className="text-[#888]" />
                 {isNew ? "Create Routing Rule" : "Edit Rule"}
               </Dialog.Title>
@@ -304,39 +306,39 @@ function RuleEditorModal({
               
               <div className="space-y-4">
                 <div>
-                  <label className="text-[14px] font-semibold text-near-black block mb-1">Rule Name</label>
-                  <input required value={formData.name} onChange={e => updateField('name', e.target.value)} placeholder="e.g. Executive Travel Protocol" className="w-full bg-white border border-[#E2DDD6] rounded-[8px] h-[40px] px-[14px] text-[15px] text-near-black outline-none form-input-focus-ring transition-all" />
+                  <label className="text-[15px] font-semibold text-near-black block mb-1">Rule Name</label>
+                  <input required value={formData.name} onChange={e => updateField('name', e.target.value)} placeholder="e.g. Executive Travel Protocol" className="w-full bg-white border border-[#E2DDD6] rounded-[8px] h-[40px] px-[14px] text-[16px] text-near-black outline-none form-input-focus-ring transition-all" />
                 </div>
                 <div>
-                  <label className="text-[14px] font-semibold text-near-black block mb-1">Description</label>
-                  <textarea required rows={2} value={formData.description} onChange={e => updateField('description', e.target.value)} placeholder="What does this rule do?" className="w-full bg-white border border-[#E2DDD6] rounded-[8px] py-[10px] px-[14px] text-[15px] text-near-black outline-none form-input-focus-ring transition-all resize-none" />
+                  <label className="text-[15px] font-semibold text-near-black block mb-1">Description</label>
+                  <textarea required rows={2} value={formData.description} onChange={e => updateField('description', e.target.value)} placeholder="What does this rule do?" className="w-full bg-white border border-[#E2DDD6] rounded-[8px] py-[10px] px-[14px] text-[16px] text-near-black outline-none form-input-focus-ring transition-all resize-none" />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between items-center mb-3">
-                  <h3 className="font-semibold text-near-black text-[14px] uppercase tracking-wider">CONDITIONS (IF)</h3>
-                  <button type="button" onClick={addCondition} className="text-[13px] text-[#2D6A4F] font-semibold hover:bg-[#F0FDF4] px-2 py-1 rounded transition-colors border border-transparent hover:border-[#2D6A4F]/20">+ Add Statement</button>
+                  <h3 className="font-semibold text-near-black text-[15px] uppercase tracking-wider">CONDITIONS (IF)</h3>
+                  <button type="button" onClick={addCondition} className="text-[14px] text-[#2D6A4F] font-semibold hover:bg-[#F0FDF4] px-2 py-1 rounded transition-colors border border-transparent hover:border-[#2D6A4F]/20">+ Add Statement</button>
                 </div>
                 
                 {formData.conditions.length === 0 ? (
-                  <div className="bg-[#FAFAFA] border border-[#E2DDD6] p-4 rounded-[8px] text-[14px] text-[#666] flex items-center gap-2">
+                  <div className="bg-[#FAFAFA] border border-[#E2DDD6] p-4 rounded-[8px] text-[15px] text-[#666] flex items-center gap-2">
                      <CheckCircle2 size={16} className="text-[#888]" /> This rule applies globally to all expenses. (Sequential)
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {formData.conditions.map((cond, i) => (
                       <div key={cond.id} className="flex flex-wrap items-center gap-2 bg-[#FAFAFA] p-3 rounded-[8px] border border-[#E2DDD6]">
-                        {i > 0 && <span className="text-[11px] font-bold text-[#888] uppercase w-8 text-center shrink-0">AND</span>}
+                        {i > 0 && <span className="text-[12px] font-bold text-[#888] uppercase w-8 text-center shrink-0">AND</span>}
                         {i === 0 && <span className="w-8 shrink-0"></span>}
                         
-                        <select value={cond.field} onChange={e => updateCondition(i, { field: e.target.value as ConditionField })} className="h-[34px] px-2 bg-white border border-[#E2DDD6] rounded outline-none text-[14px]">
+                        <select value={cond.field} onChange={e => updateCondition(i, { field: e.target.value as ConditionField })} className="h-[34px] px-2 bg-white border border-[#E2DDD6] rounded outline-none text-[15px]">
                           <option value="amount">Amount</option>
                           <option value="category">Category</option>
                           <option value="department">Department</option>
                         </select>
                         
-                        <select value={cond.operator} onChange={e => updateCondition(i, { operator: e.target.value as ConditionOperator })} className="h-[34px] px-2 bg-white border border-[#E2DDD6] rounded outline-none text-[14px]">
+                        <select value={cond.operator} onChange={e => updateCondition(i, { operator: e.target.value as ConditionOperator })} className="h-[34px] px-2 bg-white border border-[#E2DDD6] rounded outline-none text-[15px]">
                           <option value=">=">&ge;</option>
                           <option value=">">&gt;</option>
                           <option value="<=">&le;</option>
@@ -345,7 +347,7 @@ function RuleEditorModal({
                           <option value="IN">includes</option>
                         </select>
 
-                        <input required type="text" value={cond.value} onChange={e => updateCondition(i, { value: e.target.value })} placeholder="Value" className="h-[34px] px-3 border border-[#E2DDD6] bg-white rounded outline-none text-[14px] min-w-[120px]" />
+                        <input required type="text" value={cond.value} onChange={e => updateCondition(i, { value: e.target.value })} placeholder="Value" className="h-[34px] px-3 border border-[#E2DDD6] bg-white rounded outline-none text-[15px] min-w-[120px]" />
                         
                         <button type="button" onClick={() => removeCondition(i)} className="ml-auto p-1.5 text-[#888] hover:text-[#9B2335] rounded"><X size={16}/></button>
                       </div>
@@ -356,31 +358,31 @@ function RuleEditorModal({
 
               <div>
                 <div className="flex justify-between items-center mb-3">
-                  <h3 className="font-semibold text-near-black text-[14px] uppercase tracking-wider">ROUTING SEQUENCE (THEN)</h3>
-                  <button type="button" onClick={addStep} className="text-[13px] text-[#141414] font-semibold hover:bg-[#E2DDD6]/50 px-2 py-1 rounded transition-colors">+ Add Step</button>
+                  <h3 className="font-semibold text-near-black text-[15px] uppercase tracking-wider">ROUTING SEQUENCE (THEN)</h3>
+                  <button type="button" onClick={addStep} className="text-[14px] text-[#141414] font-semibold hover:bg-[#E2DDD6]/50 px-2 py-1 rounded transition-colors">+ Add Step</button>
                 </div>
 
                 {formData.steps.length === 0 ? (
-                  <div className="bg-[#EFEFEB] border border-[#E2DDD6] text-near-black p-3 rounded-[8px] text-[14px] font-medium flex gap-2 items-center">
+                  <div className="bg-[#EFEFEB] border border-[#E2DDD6] text-near-black p-3 rounded-[8px] text-[15px] font-medium flex gap-2 items-center">
                     <CheckCircle2 size={16} /> Auto-approve immediately without routing
                   </div>
                 ) : (
                   <div className="space-y-3 relative before:absolute before:inset-0 before:left-[17px] before:w-[1px] before:bg-[#E2DDD6]">
                     {formData.steps.map((step, i) => (
                       <div key={step.id} className="flex relative items-center gap-4 pl-12 text-near-black">
-                        <div className="absolute left-0 w-[34px] h-[34px] bg-white border border-[#E2DDD6] text-near-black font-medium rounded-full flex items-center justify-center text-[13px] z-10">
+                        <div className="absolute left-0 w-[34px] h-[34px] bg-white border border-[#E2DDD6] text-near-black font-medium rounded-full flex items-center justify-center text-[14px] z-10">
                           {i + 1}
                         </div>
                         
                         <div className="flex-1 bg-white p-2.5 rounded-[8px] border border-[#E2DDD6] flex items-center gap-3">
-                          <select value={step.role} onChange={e => updateStep(i, { role: e.target.value as any })} className="bg-transparent text-[15px] outline-none flex-1 font-medium text-near-black py-1">
+                          <select value={step.role} onChange={e => updateStep(i, { role: e.target.value as any })} className="bg-transparent text-[16px] outline-none flex-1 font-medium text-near-black py-1">
                             <option value="Manager">Direct Manager</option>
                             <option value="Finance">Finance Team</option>
                             <option value="Admin">System Admin</option>
                             <option value="HR">HR Department</option>
                           </select>
-                          <span className="text-[#888] text-[13px] italic shrink-0">must</span>
-                          <select disabled value={step.action} className="bg-transparent text-[14px] font-semibold text-[#666] outline-none w-24 shrink-0 appearance-none py-1">
+                          <span className="text-[#888] text-[14px] italic shrink-0">must</span>
+                          <select disabled value={step.action} className="bg-transparent text-[15px] font-semibold text-[#666] outline-none w-24 shrink-0 appearance-none py-1">
                             <option value="Approve">Approve</option>
                             <option value="Notify">Be Notified</option>
                           </select>
@@ -395,8 +397,8 @@ function RuleEditorModal({
             </div>
 
             <div className="flex justify-end gap-3 pt-5 mt-auto border-t border-[#E2DDD6] shrink-0">
-              <button type="button" onClick={onClose} className="px-5 py-2.5 text-[15px] font-medium text-near-black bg-white border border-[#E2DDD6] rounded-[10px] outline-none hover:bg-[#FAFAFA] transition-colors">Cancel</button>
-              <button type="submit" className="px-6 py-2.5 text-[15px] font-medium text-white bg-[#141414] rounded-[10px] outline-none hover:bg-[#2a2a2a] flex items-center gap-2 transition-colors active:scale-97">
+              <button type="button" onClick={onClose} className="px-5 py-2.5 text-[16px] font-medium text-near-black bg-white border border-[#E2DDD6] rounded-[10px] outline-none hover:bg-[#FAFAFA] transition-colors">Cancel</button>
+              <button type="submit" className="px-6 py-2.5 text-[16px] font-medium text-white bg-[#141414] rounded-[10px] outline-none hover:bg-[#2a2a2a] flex items-center gap-2 transition-colors active:scale-97">
                 <Save size={16} /> Save Rule
               </button>
             </div>

@@ -33,8 +33,8 @@ export default function UsersManagementPage() {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center text-near-black">
         <ShieldAlert size={48} className="text-[#9B2335] mb-4" />
-        <h2 className="text-[20px] font-[500] tracking-tight">Access Denied</h2>
-        <p className="text-[#888] text-[15px]">Only Administrators can access user management.</p>
+        <h2 className="text-[21px] font-[500] tracking-tight">Access Denied</h2>
+        <p className="text-[#888] text-[16px]">Only Administrators can access user management.</p>
       </div>
     );
   }
@@ -49,9 +49,9 @@ export default function UsersManagementPage() {
 
   const getRoleBadge = (role: string) => {
     switch(role) {
-      case "Admin": return <span className="bg-[#141414] text-white px-2 py-0.5 rounded-sm text-[12px] font-bold uppercase tracking-wider">Admin</span>;
-      case "Manager": return <span className="bg-[#EFEFEB] border border-[#E2DDD6] text-near-black px-2 py-0.5 rounded-sm text-[12px] font-bold uppercase tracking-wider">Manager</span>;
-      default: return <span className="bg-transparent border border-[#E2DDD6] text-[#666] px-2 py-0.5 rounded-sm text-[12px] font-bold uppercase tracking-wider">Employee</span>;
+      case "Admin": return <span className="bg-[#141414] text-white px-2 py-0.5 rounded-sm text-[13px] font-bold uppercase tracking-wider">Admin</span>;
+      case "Manager": return <span className="bg-[#EFEFEB] border border-[#E2DDD6] text-near-black px-2 py-0.5 rounded-sm text-[13px] font-bold uppercase tracking-wider">Manager</span>;
+      default: return <span className="bg-transparent border border-[#E2DDD6] text-[#666] px-2 py-0.5 rounded-sm text-[13px] font-bold uppercase tracking-wider">Employee</span>;
     }
   };
 
@@ -59,11 +59,11 @@ export default function UsersManagementPage() {
     <div className="max-w-6xl mx-auto space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-[28px] font-[400] text-near-black tracking-tight">User Management</h1>
-          <p className="text-[15px] text-gray-500 mt-1">Manage employee accounts, roles, and department assignments.</p>
+          <h1 className="text-[29px] font-[400] text-near-black tracking-tight">User Management</h1>
+          <p className="text-[16px] text-gray-500 mt-1">Manage employee accounts, roles, and department assignments.</p>
         </div>
         <button 
-          className="bg-[#141414] text-white px-5 py-2.5 rounded-[10px] text-[15px] font-medium hover:bg-[#2a2a2a] transition-all flex items-center gap-2 active:scale-97"
+          className="bg-[#141414] text-white px-5 py-2.5 rounded-[10px] text-[16px] font-medium hover:bg-[#2a2a2a] transition-all flex items-center gap-2 active:scale-97"
         >
           <Plus size={16} /> Invite User
         </button>
@@ -80,7 +80,7 @@ export default function UsersManagementPage() {
               placeholder="Search by name, email, department..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white border border-[#E2DDD6] rounded-[8px] h-[38px] pl-9 pr-[14px] text-[14px] text-near-black outline-none form-input-focus-ring placeholder:text-[#a8a39b] transition-all duration-150"
+              className="w-full bg-white border border-[#E2DDD6] rounded-[8px] h-[38px] pl-9 pr-[14px] text-[15px] text-near-black outline-none form-input-focus-ring placeholder:text-[#a8a39b] transition-all duration-150"
             />
           </div>
           
@@ -89,7 +89,7 @@ export default function UsersManagementPage() {
               <button
                 key={filter}
                 onClick={() => setRoleFilter(filter)}
-                className={`py-1.5 px-4 text-[14px] font-medium rounded-[8px] transition-colors flex-1 sm:flex-none text-center
+                className={`py-1.5 px-4 text-[15px] font-medium rounded-[8px] transition-colors flex-1 sm:flex-none text-center
                   ${roleFilter === filter 
                     ? 'bg-near-black text-white shadow-sm' 
                     : 'bg-transparent text-[#666] hover:text-near-black hover:bg-white/50'
@@ -107,7 +107,7 @@ export default function UsersManagementPage() {
           {filteredUsers.length > 0 ? (
             <table className="w-full text-left border-collapse min-w-[800px]">
               <thead className="sticky top-0 bg-white shadow-[0_1px_0_#E2DDD6] z-10">
-                <tr className="text-[12px] text-[#888] font-semibold uppercase tracking-[0.05em]">
+                <tr className="text-[13px] text-[#888] font-semibold uppercase tracking-[0.05em]">
                   <th className="py-3 pl-6 pr-4 font-semibold w-[280px]">Employee details</th>
                   <th className="py-3 pr-4 font-semibold w-[160px]">Role</th>
                   <th className="py-3 pr-4 font-semibold w-[160px]">Department</th>
@@ -125,12 +125,12 @@ export default function UsersManagementPage() {
                   >
                     <td className="pl-6 pr-4 py-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-[#EFEFEB] text-near-black flex items-center justify-center font-bold text-[14px] shrink-0 border border-[#E2DDD6]">
+                        <div className="w-9 h-9 rounded-full bg-[#EFEFEB] text-near-black flex items-center justify-center font-bold text-[15px] shrink-0 border border-[#E2DDD6]">
                           {u.name.split(" ").map(n => n[0]).join("").substring(0,2).toUpperCase()}
                         </div>
                         <div>
-                          <p className="text-[15px] font-medium text-[#1a1a1a] leading-tight">{u.name} {u.id === user?.id && <span className="ml-1 text-[11px] text-[#666] font-normal">(You)</span>}</p>
-                          <div className="flex items-center text-[13px] text-[#888] gap-1 mt-0.5">
+                          <p className="text-[16px] font-medium text-[#1a1a1a] leading-tight">{u.name} {u.id === user?.id && <span className="ml-1 text-[12px] text-[#666] font-normal">(You)</span>}</p>
+                          <div className="flex items-center text-[14px] text-[#888] gap-1 mt-0.5">
                             <Mail size={10} /> {u.email}
                           </div>
                         </div>
@@ -140,13 +140,13 @@ export default function UsersManagementPage() {
                       {getRoleBadge(u.role)}
                     </td>
                     <td className="pr-4 py-3">
-                      <div className="flex items-center gap-1.5 text-[14px] text-[#666]">
+                      <div className="flex items-center gap-1.5 text-[15px] text-[#666]">
                         <Building2 size={14} className="text-[#a8a39b]" />
                         {u.department}
                       </div>
                     </td>
                     <td className="pr-4 py-3">
-                      <span className={`flex items-center gap-1.5 text-[14px] font-medium
+                      <span className={`flex items-center gap-1.5 text-[15px] font-medium
                         ${u.status === 'Active' ? 'text-[#2D6A4F]' : 'text-[#888]'}
                       `}>
                         <span className={`w-1.5 h-1.5 rounded-full ${u.status === 'Active' ? 'bg-[#2D6A4F]' : 'bg-[#888]'}`}></span>
@@ -174,7 +174,7 @@ export default function UsersManagementPage() {
         </div>
         
         {/* Footer Stats */}
-        <div className="bg-[#FAFAFA] border-t border-[#E2DDD6] p-4 px-6 flex justify-between items-center text-[14px] text-[#666]">
+        <div className="bg-[#FAFAFA] border-t border-[#E2DDD6] p-4 px-6 flex justify-between items-center text-[15px] text-[#666]">
            <span>Showing {filteredUsers.length} user{filteredUsers.length !== 1 ? 's' : ''}</span>
            <span>Platform limits: 6 / 50 seats used</span>
         </div>

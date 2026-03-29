@@ -54,22 +54,22 @@ export default function LoginIndex() {
 
         <div className="max-w-xl">
           {/* Force the serif generic for this specific large hero text since user requested "serif-style" */}
-          <h1 className="text-[48px] font-[300] leading-[1.1] mb-6 tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+          <h1 className="text-[49px] font-[300] leading-[1.1] mb-6 tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
             Expense,<br />Simplified.
           </h1>
-          <p className="text-[18px] text-gray-400 leading-relaxed font-sans max-w-md">
+          <p className="text-[19px] text-gray-400 leading-relaxed font-sans max-w-md">
             Multi-currency reimbursements<br />with smart approval workflows
           </p>
         </div>
 
         <div className="flex gap-4">
-          <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[14px] text-gray-300 backdrop-blur-sm">
+          <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[15px] text-gray-300 backdrop-blur-sm">
             2,400+ companies
           </div>
-          <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[14px] text-gray-300 backdrop-blur-sm">
+          <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[15px] text-gray-300 backdrop-blur-sm">
             ₹4.2Cr processed
           </div>
-          <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[14px] text-gray-300 backdrop-blur-sm">
+          <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[15px] text-gray-300 backdrop-blur-sm">
             99.8% uptime
           </div>
         </div>
@@ -84,8 +84,8 @@ export default function LoginIndex() {
           className="w-full max-w-[380px]"
         >
           <div className="mb-8">
-            <h2 className="text-[28px] font-medium text-near-black tracking-tight mb-2">Welcome back</h2>
-            <p className="text-[16px] text-gray-500">Please enter your details to sign in.</p>
+            <h2 className="text-[29px] font-medium text-near-black tracking-tight mb-2">Welcome back</h2>
+            <p className="text-[17px] text-gray-500">Please enter your details to sign in.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -97,7 +97,7 @@ export default function LoginIndex() {
                   key={r}
                   type="button"
                   onClick={() => setRole(r)}
-                  className={`flex-1 py-1.5 text-[14px] font-medium rounded-[8px] transition-colors
+                  className={`flex-1 py-1.5 text-[15px] font-medium rounded-[8px] transition-colors
                     ${role === r 
                       ? 'bg-near-black text-white shadow-sm' 
                       : 'bg-transparent text-[#666] hover:text-near-black hover:bg-white/50'
@@ -111,14 +111,14 @@ export default function LoginIndex() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-[14px] font-medium text-near-black mb-1.5">Email address</label>
+                <label className="block text-[15px] font-medium text-near-black mb-1.5">Email address</label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="name@company.com"
-                  className="w-full bg-white border border-border-light rounded-[8px] h-[44px] px-[14px] text-[15px] text-near-black outline-none form-input-focus-ring placeholder:text-gray-400 transition-all duration-150"
+                  className="w-full bg-white border border-border-light rounded-[8px] h-[44px] px-[14px] text-[16px] text-near-black outline-none form-input-focus-ring placeholder:text-gray-400 transition-all duration-150"
                   onFocus={(e) => { e.currentTarget.style.transform = 'scale(0.99)'; }}
                   onBlur={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
                 />
@@ -126,8 +126,8 @@ export default function LoginIndex() {
 
               <div>
                 <div className="flex justify-between mb-1.5">
-                  <label className="block text-[14px] font-medium text-near-black">Password</label>
-                  <a href="#" className="text-[13px] text-[#666] hover:text-near-black transition-colors">Forgot password?</a>
+                  <label className="block text-[15px] font-medium text-near-black">Password</label>
+                  <a href="#" className="text-[14px] text-[#666] hover:text-near-black transition-colors">Forgot password?</a>
                 </div>
                 <div className="relative">
                   <input
@@ -136,7 +136,7 @@ export default function LoginIndex() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-white border border-border-light rounded-[8px] h-[44px] px-[14px] text-[15px] text-near-black outline-none form-input-focus-ring placeholder:text-gray-400 transition-all duration-150"
+                    className="w-full bg-white border border-border-light rounded-[8px] h-[44px] px-[14px] text-[16px] text-near-black outline-none form-input-focus-ring placeholder:text-gray-400 transition-all duration-150"
                     onFocus={(e) => { e.currentTarget.style.transform = 'scale(0.99)'; }}
                     onBlur={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
                   />
@@ -155,7 +155,7 @@ export default function LoginIndex() {
               type="submit"
               disabled={isSubmitting}
               whileTap={{ scale: 0.97 }}
-              className="w-full bg-near-black text-white rounded-[10px] h-[48px] text-[15px] font-medium hover:bg-[#2a2a2a] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full bg-near-black text-white rounded-[10px] h-[48px] text-[16px] font-medium hover:bg-[#2a2a2a] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isSubmitting ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -166,7 +166,7 @@ export default function LoginIndex() {
 
           </form>
 
-          <p className="mt-8 text-center text-[14px] text-[#666]">
+          <p className="mt-8 text-center text-[15px] text-[#666]">
             Don't have an account?{' '}
             <Link href="/signup" className="text-near-black font-medium hover:underline">
               Sign up

@@ -17,8 +17,8 @@ export function EmptyState({ icon: Icon, heading, subtext, action }: EmptyStateP
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
       <Icon size={64} className="text-[#D0CBC3] mb-5" />
-      <h3 className="text-[20px] font-medium text-gray-900 mb-1">{heading}</h3>
-      <p className="text-[15px] text-[#666] max-w-sm mb-6">{subtext}</p>
+      <h3 className="text-[21px] font-medium text-gray-900 mb-1">{heading}</h3>
+      <p className="text-[16px] text-[#666] max-w-sm mb-6">{subtext}</p>
       {action}
     </div>
   );
@@ -53,7 +53,7 @@ export function GlobalToasts() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="pointer-events-auto bg-[#141414] text-white px-5 py-3 rounded-[10px] shadow-2xl text-[15px] min-w-[300px]"
+            className="pointer-events-auto bg-[#141414] text-white px-5 py-3 rounded-[10px] shadow-2xl text-[16px] min-w-[300px]"
           >
             {toast.message}
           </motion.div>

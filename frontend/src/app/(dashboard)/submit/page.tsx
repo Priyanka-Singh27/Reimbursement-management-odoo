@@ -212,11 +212,11 @@ export default function SubmitExpensePage() {
 
   const FieldLabel = ({ label, fieldId }: { label: string, fieldId: string }) => (
     <div className="flex justify-between items-end mb-1.5">
-      <label htmlFor={fieldId} className="block text-[14px] font-medium text-near-black">
+      <label htmlFor={fieldId} className="block text-[15px] font-medium text-near-black">
         {label} <span className="text-red-500">*</span>
       </label>
       {autoFilledFields.has(fieldId) && (
-        <span className="text-[11px] uppercase font-bold tracking-wider bg-[#EDD9A3]/30 text-[#B5660A] py-0.5 px-2 rounded-full flex items-center gap-1">
+        <span className="text-[12px] uppercase font-bold tracking-wider bg-[#EDD9A3]/30 text-[#B5660A] py-0.5 px-2 rounded-full flex items-center gap-1">
           <CheckCircle2 size={10} /> AUTO-FILLED
         </span>
       )}
@@ -227,15 +227,15 @@ export default function SubmitExpensePage() {
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       <div className="flex justify-between items-end mb-8">
         <div>
-          <h1 className="text-[28px] font-[400] text-near-black tracking-tight">Submit Expense</h1>
-          <p className="text-[15px] text-gray-500 mt-1">Upload your receipt and verify details for reimbursement.</p>
+          <h1 className="text-[29px] font-[400] text-near-black tracking-tight">Submit Expense</h1>
+          <p className="text-[16px] text-gray-500 mt-1">Upload your receipt and verify details for reimbursement.</p>
         </div>
       </div>
 
       {validationError && (
         <div className="bg-[#FFF0F0] text-[#9B2335] p-4 rounded-[8px] flex items-start gap-3 border border-red-100">
           <AlertCircle size={20} className="shrink-0 mt-0.5" />
-          <p className="font-medium text-[15px]">{validationError}</p>
+          <p className="font-medium text-[16px]">{validationError}</p>
         </div>
       )}
 
@@ -243,7 +243,7 @@ export default function SubmitExpensePage() {
         
         {/* Left Side: Receipt Upload & OCR Status */}
         <div className="lg:col-span-5 space-y-4">
-          <h2 className="text-[15px] font-semibold text-near-black uppercase tracking-wider mb-2 flex items-center gap-2">
+          <h2 className="text-[16px] font-semibold text-near-black uppercase tracking-wider mb-2 flex items-center gap-2">
             <Receipt size={16} /> RECEIPT IMAGE
           </h2>
           
@@ -269,7 +269,7 @@ export default function SubmitExpensePage() {
                   <div className="text-near-black animate-spin">
                     <RefreshCw size={28} />
                   </div>
-                  <p className="text-[14px] font-medium text-near-black tracking-wide">Scanning receipt data...</p>
+                  <p className="text-[15px] font-medium text-near-black tracking-wide">Scanning receipt data...</p>
                 </motion.div>
               ) : receiptUrl ? (
                 <motion.div 
@@ -282,7 +282,7 @@ export default function SubmitExpensePage() {
                   <img src={receiptUrl} alt="Receipt preview" className="max-w-full max-h-[330px] object-contain rounded-[8px]" />
                   
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="bg-white text-near-black px-4 py-2 rounded-[6px] font-medium shadow-sm transform translate-y-2 group-hover:translate-y-0 transition-all text-[14px]">
+                    <div className="bg-white text-near-black px-4 py-2 rounded-[6px] font-medium shadow-sm transform translate-y-2 group-hover:translate-y-0 transition-all text-[15px]">
                       Replace Document
                     </div>
                   </div>
@@ -307,15 +307,15 @@ export default function SubmitExpensePage() {
                     <UploadCloud size={32} />
                   </div>
                   <div>
-                    <p className="text-[15px] font-medium text-near-black">Upload a receipt or invoice</p>
-                    <p className="text-[13px] text-[#888] mt-1">Accepts images and PDFs</p>
+                    <p className="text-[16px] font-medium text-near-black">Upload a receipt or invoice</p>
+                    <p className="text-[14px] text-[#888] mt-1">Accepts images and PDFs</p>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
           
-          <p className="text-[13px] text-[#888] leading-relaxed">
+          <p className="text-[14px] text-[#888] leading-relaxed">
             Data is auto-extracted using OCR. Always verify fields before submitting.
           </p>
         </div>
@@ -324,7 +324,7 @@ export default function SubmitExpensePage() {
         <div className="lg:col-span-7">
           <div className="space-y-6">
             
-            <h2 className="text-[15px] font-semibold text-near-black uppercase tracking-wider mb-2">
+            <h2 className="text-[16px] font-semibold text-near-black uppercase tracking-wider mb-2">
               DETAILS
             </h2>
             
@@ -345,18 +345,18 @@ export default function SubmitExpensePage() {
                       clearAutoFilledBadge("amount");
                     }}
                     placeholder="0.00"
-                    className={`w-full bg-white border rounded-[8px] h-[44px] pl-8 pr-[14px] text-[16px] font-mono text-near-black outline-none form-input-focus-ring placeholder:text-[#a8a39b] transition-all duration-150 ${autoFilledFields.has("amount") ? "border-[#EDD9A3] bg-[#FEF3C7]/30" : "border-[#E2DDD6]"}`}
+                    className={`w-full bg-white border rounded-[8px] h-[44px] pl-8 pr-[14px] text-[17px] font-mono text-near-black outline-none form-input-focus-ring placeholder:text-[#a8a39b] transition-all duration-150 ${autoFilledFields.has("amount") ? "border-[#EDD9A3] bg-[#FEF3C7]/30" : "border-[#E2DDD6]"}`}
                   />
                 </div>
               </div>
               
               <div>
-                <label htmlFor="currency" className="block text-[14px] font-medium text-near-black mb-1.5">Currency</label>
+                <label htmlFor="currency" className="block text-[15px] font-medium text-near-black mb-1.5">Currency</label>
                 <select
                   id="currency"
                   value={currency}
                   onChange={(e) => setCurrency(e.target.value)}
-                  className="w-full bg-white border border-[#E2DDD6] rounded-[8px] h-[44px] px-[14px] text-[15px] text-near-black outline-none form-input-focus-ring transition-all duration-150 uppercase"
+                  className="w-full bg-white border border-[#E2DDD6] rounded-[8px] h-[44px] px-[14px] text-[16px] text-near-black outline-none form-input-focus-ring transition-all duration-150 uppercase"
                 >
                   {SUPPORTED_CURRENCIES.map(c => (
                     <option key={c.code} value={c.code}>{c.code}</option>
@@ -371,7 +371,7 @@ export default function SubmitExpensePage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="flex items-center gap-2 text-[14px] overflow-hidden"
+                  className="flex items-center gap-2 text-[15px] overflow-hidden"
                 >
                   <RefreshCw size={14} className={`text-[#888] ${isFxLoading ? "animate-spin" : ""}`} />
                   {fxError ? (
@@ -400,7 +400,7 @@ export default function SubmitExpensePage() {
                     setDate(e.target.value);
                     clearAutoFilledBadge("date");
                   }}
-                  className={`w-full bg-white border rounded-[8px] h-[44px] px-[14px] text-[15px] text-near-black outline-none form-input-focus-ring transition-all duration-150 ${autoFilledFields.has("date") ? "border-[#EDD9A3] bg-[#FEF3C7]/30" : "border-[#E2DDD6]"}`}
+                  className={`w-full bg-white border rounded-[8px] h-[44px] px-[14px] text-[16px] text-near-black outline-none form-input-focus-ring transition-all duration-150 ${autoFilledFields.has("date") ? "border-[#EDD9A3] bg-[#FEF3C7]/30" : "border-[#E2DDD6]"}`}
                 />
               </div>
 
@@ -413,7 +413,7 @@ export default function SubmitExpensePage() {
                     setCategory(e.target.value);
                     clearAutoFilledBadge("category");
                   }}
-                  className={`w-full bg-white border rounded-[8px] h-[44px] px-[14px] text-[15px] outline-none form-input-focus-ring transition-all duration-150 ${!category ? "text-[#a8a39b]" : "text-near-black"} ${autoFilledFields.has("category") ? "border-[#EDD9A3] bg-[#FEF3C7]/30 text-near-black" : "border-[#E2DDD6]"}`}
+                  className={`w-full bg-white border rounded-[8px] h-[44px] px-[14px] text-[16px] outline-none form-input-focus-ring transition-all duration-150 ${!category ? "text-[#a8a39b]" : "text-near-black"} ${autoFilledFields.has("category") ? "border-[#EDD9A3] bg-[#FEF3C7]/30 text-near-black" : "border-[#E2DDD6]"}`}
                 >
                   <option value="" disabled>Select category</option>
                   {CATEGORIES.map(c => (
@@ -434,7 +434,7 @@ export default function SubmitExpensePage() {
                   clearAutoFilledBadge("description");
                 }}
                 placeholder="e.g. Client dinner with Acme Corp"
-                className={`w-full bg-white border rounded-[8px] pt-[12px] px-[14px] text-[15px] placeholder:text-[#a8a39b] text-near-black outline-none form-input-focus-ring resize-none transition-all duration-150 ${autoFilledFields.has("description") ? "border-[#EDD9A3] bg-[#FEF3C7]/30" : "border-[#E2DDD6]"}`}
+                className={`w-full bg-white border rounded-[8px] pt-[12px] px-[14px] text-[16px] placeholder:text-[#a8a39b] text-near-black outline-none form-input-focus-ring resize-none transition-all duration-150 ${autoFilledFields.has("description") ? "border-[#EDD9A3] bg-[#FEF3C7]/30" : "border-[#E2DDD6]"}`}
               />
             </div>
             
@@ -449,7 +449,7 @@ export default function SubmitExpensePage() {
               <button
                 type="submit"
                 disabled={isSubmitting || isOcrLoading || isFxLoading || (fraudEval.score >= 85)}
-                className={`px-8 py-2.5 text-[15px] font-medium text-white bg-[#141414] rounded-[10px] hover:bg-[#2a2a2a] transition-all flex items-center gap-2 active:scale-97
+                className={`px-8 py-2.5 text-[16px] font-medium text-white bg-[#141414] rounded-[10px] hover:bg-[#2a2a2a] transition-all flex items-center gap-2 active:scale-97
                   ${(isSubmitting || isOcrLoading || isFxLoading || fraudEval.score >= 85) ? "opacity-70 cursor-not-allowed" : ""}
                 `}
               >
