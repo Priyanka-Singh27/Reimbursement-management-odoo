@@ -39,6 +39,19 @@ const listUsers = asyncHandler(async (req, res) => {
   return apiResponse(res, StatusCodes.OK, "Users fetched.", users);
 });
 
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findOne({
+    _id: req.params.id,
+    companyId: req.user.companyId,
+  }).select("-password");
+
+  if (!user) {
+    throw new ApiError(StatusCodes.NOT_FOUND, "User not found.");
+  }
+
+  return apiResponse(res, StatusCodes.OK, "User fetched.", user);
+});
+
 const updateUserRole = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { role, managerId } = req.body;
@@ -55,8 +68,28 @@ const updateUserRole = asyncHandler(async (req, res) => {
   return apiResponse(res, StatusCodes.OK, "User updated.", user);
 });
 
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findOne({
+    _id: req.params.id,
+    companyId: req.user.companyId,
+  });
+
+  if (!user) {
+    throw new ApiError(StatusCodes.NOT_FOUND, "User not found.");
+  }
+
+  if (String(user._id) === String(req.user._id)) {
+    throw new ApiError(StatusCodes.BAD_REQUEST, "You cannot delete yourself.");
+  }
+
+  await user.deleteOne();
+  return apiResponse(res, StatusCodes.OK, "User deleted.", null);
+});
+
 module.exports = {
   createUser,
   listUsers,
+  getUserById,
   updateUserRole,
+  deleteUser,
 };

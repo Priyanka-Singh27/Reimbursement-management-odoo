@@ -1,6 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const asyncHandler = require("../utils/asyncHandler");
 const apiResponse = require("../utils/apiResponse");
+const ApprovalLog = require("../models/approvalLog.model");
 const {
   approveExpense,
   rejectExpense,
@@ -33,8 +34,31 @@ const reject = asyncHandler(async (req, res) => {
   return apiResponse(res, StatusCodes.OK, "Expense rejected.", expense);
 });
 
+const getApprovalLogs = asyncHandler(async (req, res) => {
+  const logs = await ApprovalLog.find({ expenseId: req.params.expenseId })
+    .populate("approverId", "name email role")
+    .sort({ timestamp: 1 });
+
+  return apiResponse(res, StatusCodes.OK, "Approval logs fetched.", logs);
+});
+
+const getApprovalHistory = asyncHandler(async (req, res) => {
+  const logs = await ApprovalLog.find({ approverId: req.user._id })
+    .populate({
+      path: "expenseId",
+      select: "amount convertedAmount currency companyCurrency category description status expenseDate",
+      populate: { path: "userId", select: "name email" },
+    })
+    .sort({ timestamp: -1 })
+    .limit(50);
+
+  return apiResponse(res, StatusCodes.OK, "Approval history fetched.", logs);
+});
+
 module.exports = {
   listPendingApprovals,
   approve,
   reject,
+  getApprovalLogs,
+  getApprovalHistory,
 };
